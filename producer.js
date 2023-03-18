@@ -3,7 +3,7 @@ const Chance = require("chance");
 
 
 const kafka = new Kafka({
-    clientId: 'my-app',
+    clientId: 'con-cac',
     brokers: ['localhost:9092', 'localhost:9093', 'localhost:9094']
 });
 const chance = new Chance();
