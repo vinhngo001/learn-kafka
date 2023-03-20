@@ -1,8 +1,17 @@
+require("dotenv").config();
 const { Kafka } = require("kafkajs");
 
 const kafka = new Kafka({
-    clientId: 'con-cac',
-    brokers: ['localhost:9092', 'localhost:9093', 'localhost:9094']
+    clientId: 'test-topic',
+    brokers: ['localhost:9092', 
+    // 'localhost:9093', 'localhost:9094'
+],
+    // ssl: true,
+    sasl: {
+        mechanism: 'plain', // scram-sha-256 or scram-sha-512
+        username: process.env.CLIENT_USER,
+        password: process.env.CLIENT_PASSWORD
+    },
 });
 
 const consumer = kafka.consumer({ groupId: 'test-group' });

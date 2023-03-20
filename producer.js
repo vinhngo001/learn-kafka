@@ -1,10 +1,16 @@
+require("dotenv").config();
 const { Kafka } = require("kafkajs");
 const Chance = require("chance");
 
-
 const kafka = new Kafka({
-    clientId: 'con-cac',
-    brokers: ['localhost:9092', 'localhost:9093', 'localhost:9094']
+    clientId: 'test-producer',
+    brokers: ['localhost:9092'],
+    // ssl: true,
+    sasl: {
+        mechanism: 'plain', // scram-sha-256 or scram-sha-512
+        username: process.env.CLIENT_USER,
+        password: process.env.CLIENT_PASSWORD
+    },
 });
 const chance = new Chance();
 
