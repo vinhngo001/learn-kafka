@@ -1,6 +1,4 @@
 version: "3.8"
-networks:
-  traefik:
 volumes:
   kafka:
 services:
@@ -27,12 +25,5 @@ services:
       - KAFKA_CFG_SASL_ENABLED_MECHANISMS=PLAIN
       - KAFKA_CFG_SASL_MECHANISM_CONTROLLER_PROTOCOL=PLAIN
       - KAFKA_CFG_SASL_MECHANISM_INTER_BROKER_PROTOCOL=PLAIN
-    # labels:
-    #   traefik.enable: true
-    #   traefik.http.routers.kafka.rule: Host(`${KAFKA_DOMAIN}`)
-    #   traefik.http.routers.kafka.entrypoints: websecure
-    #   traefik.http.routers.kafka.service: kafka
-    #   traefik.http.services.kafka.loadbalancer.server.port: 9092
-    #   traefik.http.routers.kafka.tls.certresolver: letsencrypt
     volumes:
       - ./kafka:/bitnami/kafka
